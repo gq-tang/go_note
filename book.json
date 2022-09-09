@@ -1,0 +1,11 @@
+{
+    "plugins":[
+        "expandable-chapters",
+        "back-to-top-button",
+        "code",
+        "copy-code-button",
+        "advanced-emoji",
+        "splitter",
+        "-sharing"
+    ]
+}
