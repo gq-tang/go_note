@@ -969,7 +969,97 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="goroutine">Goroutine</h1>
+                                <h1 id="1-goroutine">1. Goroutine</h1>
+<p>&#x5728;java/c++&#x4E2D;&#x6211;&#x4EEC;&#x8981;&#x5B9E;&#x73B0;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x53BB;&#x5305;&#x88C5;&#x4E00;&#x4E2A;&#x53C8;&#x4E00;&#x4E2A;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x540C;&#x65F6;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x53BB;&#x8C03;&#x5EA6;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x5E76;&#x7EF4;&#x62A4;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#xFF0C;&#x8FD9;&#x4E00;&#x5207;&#x901A;&#x5E38;&#x4F1A;&#x8017;&#x8D39;&#x7A0B;&#x5E8F;&#x5458;&#x5927;&#x91CF;&#x7684;&#x5FC3;&#x667A;&#x3002;&#x90A3;&#x4E48;&#x80FD;&#x4E0D;&#x80FD;&#x6709;&#x4E00;&#x79CD;&#x673A;&#x5236;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x53EA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x5F88;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x8BA9;&#x7CFB;&#x7EDF;&#x53BB;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E9B;&#x4EFB;&#x52A1;&#x5206;&#x914D;&#x5230;CPU&#x4E0A;&#x5B9E;&#x73B0;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x5462;&#xFF1F;</p>
+<p>Go&#x8BED;&#x8A00;&#x4E2D;&#x7684;goroutine&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x79CD;&#x673A;&#x5236;&#xFF0C;goroutine&#x7684;&#x6982;&#x5FF5;&#x7C7B;&#x4F3C;&#x4E8E;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F46; goroutine&#x662F;&#x7531;Go&#x7684;&#x8FD0;&#x884C;&#x65F6;&#xFF08;runtime&#xFF09;&#x8C03;&#x5EA6;&#x548C;&#x7BA1;&#x7406;&#x7684;&#x3002;Go&#x7A0B;&#x5E8F;&#x4F1A;&#x667A;&#x80FD;&#x5730;&#x5C06; goroutine &#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x5408;&#x7406;&#x5730;&#x5206;&#x914D;&#x7ED9;&#x6BCF;&#x4E2A;CPU&#x3002;Go&#x8BED;&#x8A00;&#x4E4B;&#x6240;&#x4EE5;&#x88AB;&#x79F0;&#x4E3A;&#x73B0;&#x4EE3;&#x5316;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x5728;&#x8BED;&#x8A00;&#x5C42;&#x9762;&#x5DF2;&#x7ECF;&#x5185;&#x7F6E;&#x4E86;&#x8C03;&#x5EA6;&#x548C;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x7684;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x5728;Go&#x8BED;&#x8A00;&#x7F16;&#x7A0B;&#x4E2D;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x53BB;&#x81EA;&#x5DF1;&#x5199;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x3001;&#x534F;&#x7A0B;&#xFF0C;&#x4F60;&#x7684;&#x6280;&#x80FD;&#x5305;&#x91CC;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6280;&#x80FD;&#x2013;goroutine&#xFF0C;&#x5F53;&#x4F60;&#x9700;&#x8981;&#x8BA9;&#x67D0;&#x4E2A;&#x4EFB;&#x52A1;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x628A;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5F00;&#x542F;&#x4E00;&#x4E2A;goroutine&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x7C97;&#x66B4;&#x3002;</p>
+<p>&#x4F7F;&#x7528;goroutine
+Go&#x8BED;&#x8A00;&#x4E2D;&#x4F7F;&#x7528;goroutine&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#x5728;&#x524D;&#x9762;&#x52A0;&#x4E0A;go&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E3A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;goroutine&#x3002;</p>
+<p>&#x4E00;&#x4E2A;goroutine&#x5FC5;&#x5B9A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x591A;&#x4E2A;goroutine&#x53BB;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x542F;&#x52A8;&#x5355;&#x4E2A;goroutine
+&#x542F;&#x52A8;goroutine&#x7684;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF08;&#x666E;&#x901A;&#x51FD;&#x6570;&#x548C;&#x533F;&#x540D;&#x51FD;&#x6570;&#xFF09;&#x524D;&#x9762;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;go&#x5173;&#x952E;&#x5B57;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>func hello() {
+    fmt.Println(&quot;Hello Goroutine!&quot;)
+}
+func main() {
+    hello()
+    fmt.Println(&quot;main goroutine done!&quot;)
+}
+</code></pre><p>&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;hello&#x51FD;&#x6570;&#x548C;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x6253;&#x5370;&#x5B8C;Hello Goroutine!&#x540E;&#x6253;&#x5370;main goroutine done!&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5728;&#x8C03;&#x7528;hello&#x51FD;&#x6570;&#x524D;&#x9762;&#x52A0;&#x4E0A;&#x5173;&#x952E;&#x5B57;go&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x542F;&#x52A8;&#x4E00;&#x4E2A;goroutine&#x53BB;&#x6267;&#x884C;hello&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>func main() {
+    go hello() // &#x542F;&#x52A8;&#x53E6;&#x5916;&#x4E00;&#x4E2A;goroutine&#x53BB;&#x6267;&#x884C;hello&#x51FD;&#x6570;
+    fmt.Println(&quot;main goroutine done!&quot;)
+}
+</code></pre><p>&#x8FD9;&#x4E00;&#x6B21;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x53EA;&#x6253;&#x5370;&#x4E86;main goroutine done!&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6253;&#x5370;Hello Goroutine!&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<p>&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#xFF0C;Go&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x4E3A;main()&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;goroutine&#x3002;</p>
+<p>&#x5F53;main()&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x5019;&#x8BE5;goroutine&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x6240;&#x6709;&#x5728;main()&#x51FD;&#x6570;&#x4E2D;&#x542F;&#x52A8;&#x7684;goroutine&#x4F1A;&#x4E00;&#x540C;&#x7ED3;&#x675F;&#xFF0C;main&#x51FD;&#x6570;&#x6240;&#x5728;&#x7684;goroutine&#x5C31;&#x50CF;&#x662F;&#x6743;&#x5229;&#x7684;&#x6E38;&#x620F;&#x4E2D;&#x7684;&#x591C;&#x738B;&#xFF0C;&#x5176;&#x4ED6;&#x7684;goroutine&#x90FD;&#x662F;&#x5F02;&#x9B3C;&#xFF0C;&#x591C;&#x738B;&#x4E00;&#x6B7B;&#x5B83;&#x8F6C;&#x5316;&#x7684;&#x90A3;&#x4E9B;&#x5F02;&#x9B3C;&#x4E5F;&#x5C31;&#x5168;&#x90E8;GG&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x60F3;&#x529E;&#x6CD5;&#x8BA9;main&#x51FD;&#x6570;&#x7B49;&#x4E00;&#x7B49;hello&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7C97;&#x66B4;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;time.Sleep&#x4E86;&#x3002;</p>
+<pre><code>func main() {
+    go hello() // &#x542F;&#x52A8;&#x53E6;&#x5916;&#x4E00;&#x4E2A;goroutine&#x53BB;&#x6267;&#x884C;hello&#x51FD;&#x6570;
+    fmt.Println(&quot;main goroutine done!&quot;)
+    time.Sleep(time.Second)
+}
+</code></pre><p>&#x6267;&#x884C;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x8FD9;&#x4E00;&#x6B21;&#x5148;&#x6253;&#x5370;main goroutine done!&#xFF0C;&#x7136;&#x540E;&#x7D27;&#x63A5;&#x7740;&#x6253;&#x5370;Hello Goroutine!&#x3002;</p>
+<p>&#x9996;&#x5148;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x5148;&#x6253;&#x5370;main goroutine done!&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5728;&#x521B;&#x5EFA;&#x65B0;&#x7684;goroutine&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x82B1;&#x8D39;&#x4E00;&#x4E9B;&#x65F6;&#x95F4;&#xFF0C;&#x800C;&#x6B64;&#x65F6;main&#x51FD;&#x6570;&#x6240;&#x5728;&#x7684;goroutine&#x662F;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x7684;&#x3002;</p>
+<p>&#x542F;&#x52A8;&#x591A;&#x4E2A;goroutine
+&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#x5B9E;&#x73B0;&#x5E76;&#x53D1;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x7B80;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x591A;&#x4E2A;goroutine&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A; &#xFF08;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;sync.WaitGroup&#x6765;&#x5B9E;&#x73B0;goroutine&#x7684;&#x540C;&#x6B65;&#xFF09;</p>
+<pre><code>var wg sync.WaitGroup
+
+func hello(i int) {
+    defer wg.Done() // goroutine&#x7ED3;&#x675F;&#x5C31;&#x767B;&#x8BB0;-1
+    fmt.Println(&quot;Hello Goroutine!&quot;, i)
+}
+func main() {
+
+    for i := 0; i &lt; 10; i++ {
+        wg.Add(1) // &#x542F;&#x52A8;&#x4E00;&#x4E2A;goroutine&#x5C31;&#x767B;&#x8BB0;+1
+        go hello(i)
+    }
+    wg.Wait() // &#x7B49;&#x5F85;&#x6240;&#x6709;&#x767B;&#x8BB0;&#x7684;goroutine&#x90FD;&#x7ED3;&#x675F;
+}
+</code></pre><p>&#x591A;&#x6B21;&#x6267;&#x884C;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x6BCF;&#x6B21;&#x6253;&#x5370;&#x7684;&#x6570;&#x5B57;&#x7684;&#x987A;&#x5E8F;&#x90FD;&#x4E0D;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;10&#x4E2A;goroutine&#x662F;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x800C;goroutine&#x7684;&#x8C03;&#x5EA6;&#x662F;&#x968F;&#x673A;&#x7684;&#x3002;</p>
+<p>&#x6CE8;&#x610F;
+&#x5982;&#x679C;&#x4E3B;&#x534F;&#x7A0B;&#x9000;&#x51FA;&#x4E86;&#xFF0C;&#x5176;&#x4ED6;&#x4EFB;&#x52A1;&#x8FD8;&#x6267;&#x884C;&#x5417;&#xFF08;&#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#x5427;&#xFF09;</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+func main() {
+    // &#x5408;&#x8D77;&#x6765;&#x5199;
+    go func() {
+        i := 0
+        for {
+            i++
+            fmt.Printf(&quot;new goroutine: i = %d\n&quot;, i)
+            time.Sleep(time.Second)
+        }
+    }()
+    i := 0
+    for {
+        i++
+        fmt.Printf(&quot;main goroutine: i = %d\n&quot;, i)
+        time.Sleep(time.Second)
+        if i == 2 {
+            break
+        }
+    }
+}
+</code></pre><h3 id="111-goroutine&#x4E0E;&#x7EBF;&#x7A0B;">1.1.1. goroutine&#x4E0E;&#x7EBF;&#x7A0B;</h3>
+<p>&#x53EF;&#x589E;&#x957F;&#x7684;&#x6808;
+OS&#x7EBF;&#x7A0B;&#xFF08;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#xFF09;&#x4E00;&#x822C;&#x90FD;&#x6709;&#x56FA;&#x5B9A;&#x7684;&#x6808;&#x5185;&#x5B58;&#xFF08;&#x901A;&#x5E38;&#x4E3A;2MB&#xFF09;,&#x4E00;&#x4E2A;goroutine&#x7684;&#x6808;&#x5728;&#x5176;&#x751F;&#x547D;&#x5468;&#x671F;&#x5F00;&#x59CB;&#x65F6;&#x53EA;&#x6709;&#x5F88;&#x5C0F;&#x7684;&#x6808;&#xFF08;&#x5178;&#x578B;&#x60C5;&#x51B5;&#x4E0B;2KB&#xFF09;&#xFF0C;goroutine&#x7684;&#x6808;&#x4E0D;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x4ED6;&#x53EF;&#x4EE5;&#x6309;&#x9700;&#x589E;&#x5927;&#x548C;&#x7F29;&#x5C0F;&#xFF0C;goroutine&#x7684;&#x6808;&#x5927;&#x5C0F;&#x9650;&#x5236;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;1GB&#xFF0C;&#x867D;&#x7136;&#x6781;&#x5C11;&#x4F1A;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#x4E00;&#x6B21;&#x521B;&#x5EFA;&#x5341;&#x4E07;&#x5DE6;&#x53F3;&#x7684;goroutine&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;</p>
+<p>goroutine&#x8C03;&#x5EA6;
+GPM&#x662F;Go&#x8BED;&#x8A00;&#x8FD0;&#x884C;&#x65F6;&#xFF08;runtime&#xFF09;&#x5C42;&#x9762;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x662F;go&#x8BED;&#x8A00;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x5957;&#x8C03;&#x5EA6;&#x7CFB;&#x7EDF;&#x3002;&#x533A;&#x522B;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8C03;&#x5EA6;OS&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>1.G&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x5C31;&#x662F;&#x4E2A;goroutine&#x7684;&#xFF0C;&#x91CC;&#x9762;&#x9664;&#x4E86;&#x5B58;&#x653E;&#x672C;goroutine&#x4FE1;&#x606F;&#x5916; &#x8FD8;&#x6709;&#x4E0E;&#x6240;&#x5728;P&#x7684;&#x7ED1;&#x5B9A;&#x7B49;&#x4FE1;&#x606F;&#x3002;
+2.P&#x7BA1;&#x7406;&#x7740;&#x4E00;&#x7EC4;goroutine&#x961F;&#x5217;&#xFF0C;P&#x91CC;&#x9762;&#x4F1A;&#x5B58;&#x50A8;&#x5F53;&#x524D;goroutine&#x8FD0;&#x884C;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#xFF08;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;&#x5806;&#x6808;&#x5730;&#x5740;&#x53CA;&#x5730;&#x5740;&#x8FB9;&#x754C;&#xFF09;&#xFF0C;P&#x4F1A;&#x5BF9;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#x7684;goroutine&#x961F;&#x5217;&#x505A;&#x4E00;&#x4E9B;&#x8C03;&#x5EA6;&#xFF08;&#x6BD4;&#x5982;&#x628A;&#x5360;&#x7528;CPU&#x65F6;&#x95F4;&#x8F83;&#x957F;&#x7684;goroutine&#x6682;&#x505C;&#x3001;&#x8FD0;&#x884C;&#x540E;&#x7EED;&#x7684;goroutine&#x7B49;&#x7B49;&#xFF09;&#x5F53;&#x81EA;&#x5DF1;&#x7684;&#x961F;&#x5217;&#x6D88;&#x8D39;&#x5B8C;&#x4E86;&#x5C31;&#x53BB;&#x5168;&#x5C40;&#x961F;&#x5217;&#x91CC;&#x53D6;&#xFF0C;&#x5982;&#x679C;&#x5168;&#x5C40;&#x961F;&#x5217;&#x91CC;&#x4E5F;&#x6D88;&#x8D39;&#x5B8C;&#x4E86;&#x4F1A;&#x53BB;&#x5176;&#x4ED6;P&#x7684;&#x961F;&#x5217;&#x91CC;&#x62A2;&#x4EFB;&#x52A1;&#x3002;
+3.M&#xFF08;machine&#xFF09;&#x662F;Go&#x8FD0;&#x884C;&#x65F6;&#xFF08;runtime&#xFF09;&#x5BF9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x7EBF;&#x7A0B;&#x7684;&#x865A;&#x62DF;&#xFF0C; M&#x4E0E;&#x5185;&#x6838;&#x7EBF;&#x7A0B;&#x4E00;&#x822C;&#x662F;&#x4E00;&#x4E00;&#x6620;&#x5C04;&#x7684;&#x5173;&#x7CFB;&#xFF0C; &#x4E00;&#x4E2A;groutine&#x6700;&#x7EC8;&#x662F;&#x8981;&#x653E;&#x5230;M&#x4E0A;&#x6267;&#x884C;&#x7684;&#xFF1B;
+P&#x4E0E;M&#x4E00;&#x822C;&#x4E5F;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x3002;&#x4ED6;&#x4EEC;&#x5173;&#x7CFB;&#x662F;&#xFF1A; P&#x7BA1;&#x7406;&#x7740;&#x4E00;&#x7EC4;G&#x6302;&#x8F7D;&#x5728;M&#x4E0A;&#x8FD0;&#x884C;&#x3002;&#x5F53;&#x4E00;&#x4E2A;G&#x957F;&#x4E45;&#x963B;&#x585E;&#x5728;&#x4E00;&#x4E2A;M&#x4E0A;&#x65F6;&#xFF0C;runtime&#x4F1A;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;M&#xFF0C;&#x963B;&#x585E;G&#x6240;&#x5728;&#x7684;P&#x4F1A;&#x628A;&#x5176;&#x4ED6;&#x7684;G &#x6302;&#x8F7D;&#x5728;&#x65B0;&#x5EFA;&#x7684;M&#x4E0A;&#x3002;&#x5F53;&#x65E7;&#x7684;G&#x963B;&#x585E;&#x5B8C;&#x6210;&#x6216;&#x8005;&#x8BA4;&#x4E3A;&#x5176;&#x5DF2;&#x7ECF;&#x6B7B;&#x6389;&#x65F6; &#x56DE;&#x6536;&#x65E7;&#x7684;M&#x3002;</p>
+<p>P&#x7684;&#x4E2A;&#x6570;&#x662F;&#x901A;&#x8FC7;runtime.GOMAXPROCS&#x8BBE;&#x5B9A;&#xFF08;&#x6700;&#x5927;256&#xFF09;&#xFF0C;Go1.5&#x7248;&#x672C;&#x4E4B;&#x540E;&#x9ED8;&#x8BA4;&#x4E3A;&#x7269;&#x7406;&#x7EBF;&#x7A0B;&#x6570;&#x3002; &#x5728;&#x5E76;&#x53D1;&#x91CF;&#x5927;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x589E;&#x52A0;&#x4E00;&#x4E9B;P&#x548C;M&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x592A;&#x591A;&#xFF0C;&#x5207;&#x6362;&#x592A;&#x9891;&#x7E41;&#x7684;&#x8BDD;&#x5F97;&#x4E0D;&#x507F;&#x5931;&#x3002;</p>
+<p>&#x5355;&#x4ECE;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x8BB2;&#xFF0C;Go&#x8BED;&#x8A00;&#x76F8;&#x6BD4;&#x8D77;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;OS&#x7EBF;&#x7A0B;&#x662F;&#x7531;OS&#x5185;&#x6838;&#x6765;&#x8C03;&#x5EA6;&#x7684;&#xFF0C;goroutine&#x5219;&#x662F;&#x7531;Go&#x8FD0;&#x884C;&#x65F6;&#xFF08;runtime&#xFF09;&#x81EA;&#x5DF1;&#x7684;&#x8C03;&#x5EA6;&#x5668;&#x8C03;&#x5EA6;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x8C03;&#x5EA6;&#x5668;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x79F0;&#x4E3A;m:n&#x8C03;&#x5EA6;&#x7684;&#x6280;&#x672F;&#xFF08;&#x590D;&#x7528;/&#x8C03;&#x5EA6;m&#x4E2A;goroutine&#x5230;n&#x4E2A;OS&#x7EBF;&#x7A0B;&#xFF09;&#x3002; &#x5176;&#x4E00;&#x5927;&#x7279;&#x70B9;&#x662F;goroutine&#x7684;&#x8C03;&#x5EA6;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x4E0B;&#x5B8C;&#x6210;&#x7684;&#xFF0C; &#x4E0D;&#x6D89;&#x53CA;&#x5185;&#x6838;&#x6001;&#x4E0E;&#x7528;&#x6237;&#x6001;&#x4E4B;&#x95F4;&#x7684;&#x9891;&#x7E41;&#x5207;&#x6362;&#xFF0C;&#x5305;&#x62EC;&#x5185;&#x5B58;&#x7684;&#x5206;&#x914D;&#x4E0E;&#x91CA;&#x653E;&#xFF0C;&#x90FD;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x7EF4;&#x62A4;&#x7740;&#x4E00;&#x5757;&#x5927;&#x7684;&#x5185;&#x5B58;&#x6C60;&#xFF0C; &#x4E0D;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x7684;malloc&#x51FD;&#x6570;&#xFF08;&#x9664;&#x975E;&#x5185;&#x5B58;&#x6C60;&#x9700;&#x8981;&#x6539;&#x53D8;&#xFF09;&#xFF0C;&#x6210;&#x672C;&#x6BD4;&#x8C03;&#x5EA6;OS&#x7EBF;&#x7A0B;&#x4F4E;&#x5F88;&#x591A;&#x3002; &#x53E6;&#x4E00;&#x65B9;&#x9762;&#x5145;&#x5206;&#x5229;&#x7528;&#x4E86;&#x591A;&#x6838;&#x7684;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF0C;&#x8FD1;&#x4F3C;&#x7684;&#x628A;&#x82E5;&#x5E72;goroutine&#x5747;&#x5206;&#x5728;&#x7269;&#x7406;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C; &#x518D;&#x52A0;&#x4E0A;&#x672C;&#x8EAB;goroutine&#x7684;&#x8D85;&#x8F7B;&#x91CF;&#xFF0C;&#x4EE5;&#x4E0A;&#x79CD;&#x79CD;&#x4FDD;&#x8BC1;&#x4E86;go&#x8C03;&#x5EA6;&#x65B9;&#x9762;&#x7684;&#x6027;&#x80FD;&#x3002;</p>
 
                                 
                                 </section>
@@ -1013,7 +1103,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Goroutine","level":"1.8.2","depth":2,"next":{"title":"runtime包","level":"1.8.3","depth":2,"path":"concurrency/runtime.md","ref":"concurrency/runtime.md","articles":[]},"previous":{"title":"并发介绍","level":"1.8.1","depth":2,"path":"concurrency/introduce.md","ref":"concurrency/introduce.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","back-to-top-button","code","copy-code-button","advanced-emoji","splitter","-sharing","livereload"],"pluginsConfig":{"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"concurrency/goroutine.md","mtime":"2022-09-16T01:18:38.030Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-16T03:51:05.035Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Goroutine","level":"1.8.2","depth":2,"next":{"title":"runtime包","level":"1.8.3","depth":2,"path":"concurrency/runtime.md","ref":"concurrency/runtime.md","articles":[]},"previous":{"title":"并发介绍","level":"1.8.1","depth":2,"path":"concurrency/introduce.md","ref":"concurrency/introduce.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","back-to-top-button","code","copy-code-button","advanced-emoji","splitter","-sharing","livereload"],"pluginsConfig":{"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"concurrency/goroutine.md","mtime":"2022-09-16T07:14:09.277Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-16T07:14:20.763Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
