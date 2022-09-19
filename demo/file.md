@@ -4,8 +4,8 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"github.com/pkg/errors"
 	"io/ioutil"
 	"log"
 	"os"
@@ -31,7 +31,7 @@ func main() {
 func open(filename string) (*os.File, error) {
 	fs, err := os.OpenFile(filename, os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
 	if err != nil {
-		return nil, errors.Wrap(err, "open file error")
+		return nil, errors.New("open file error")
 	}
 	return fs, nil
 }
@@ -44,4 +44,5 @@ func write(fs *os.File, data []byte) error {
 func read(fs *os.File) ([]byte, error) {
 	return ioutil.ReadAll(fs)
 }
+
 ```
