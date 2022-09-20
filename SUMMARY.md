@@ -15,6 +15,7 @@
     * [基本数据类型](base/base_type.md)
     * [数组](base/array.md)
     * [数组、字符串和切片](base/advanced.md)
+    * [小测试](base/test.md)
 * [流程控制](process/README.md)
     * [条件语句if](process/if.md)
     * [条件语句switch](process/switch.md)
