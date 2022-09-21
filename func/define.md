@@ -22,12 +22,13 @@
 函数可以返回任意数量的返回值。
 
 使用关键字 func 定义函数，左大括号依旧不能另起一行。
-
+```go 
 func test(x, y int, s string) (int, string) {
     // 类型相同的相邻参数，参数类型可合并。 多返回值必须用括号。
     n := x + y          
-    return n, fmt.Sprintf(s, n)
+    return n, fmt.Sprintf("%s %d", s, n)
 }
+```
 函数是第一类对象，可作为参数传递。建议将复杂签名定义为函数类型，以便于阅读。
 ```go
 package main
@@ -37,6 +38,7 @@ import "fmt"
 func test(fn func() int) int {
     return fn()
 }
+
 // 定义函数类型。
 type FormatFunc func(s string, x, y int) string 
 

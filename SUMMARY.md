@@ -23,6 +23,7 @@
     * [循环语句for](process/for.md)
     * [循环语句range](process/range.md)
     * [循环控制goto,break,continue](process/control.md)
+    * [实例&小测试](process/test.md)
 * [函数](func/README.md)
     * [函数定义](func/define.md)
     * [参数](func/param.md)
