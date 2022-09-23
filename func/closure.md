@@ -10,7 +10,7 @@
  
 
 #### 1.1.2. Go的闭包
-Go语言是支持闭包的，这里只是简单地讲一下在Go语言中闭包是如何实现的。 下面我来将之前的JavaScript的闭包例子用Go来实现。
+Go语言是支持闭包的，这里只是简单地讲一下在Go语言中闭包是如何实现的。
 ```go 
 package main
 
@@ -42,7 +42,7 @@ func main() {
     1
     2
     3
-可以发现，输出和之前的JavaScript的代码是一致的。具体的原因和上面的也是一样的，这说明Go语言是支持闭包的。
+
 
 闭包复制的是原对象指针，这就很容易解释延迟引用现象。
 ```go 
@@ -69,8 +69,9 @@ func main() {
     x (0xc42007c008) = 100
     x (0xc42007c008) = 100
 在汇编层 ，test 实际返回的是 FuncVal 对象，其中包含了匿名函数地址、闭包对象指针。当调 匿名函数时，只需以某个寄存器传递该对象即可。
-
+```
     FuncVal { func_address, closure_var_pointer ... }
+```    
 外部引用函数参数局部变量
 ```go 
 package main
@@ -129,8 +130,8 @@ func main() {
 
 构成递归需具备的条件：
 
-    1.子问题须与原始问题为同样的事，且更为简单。
-    2.不能无限制地调用本身，须有个出口，化简为非递归状况处理。
+    1.自己调用自己
+    2.有终止条件
 数字阶乘
 一个正整数的阶乘（factorial）是所有小于及等于该数的正整数的积，并且0的阶乘为1。自然数n的阶乘写作n!。1808年，基斯顿·卡曼引进这个表示法。
 ```go 
@@ -138,16 +139,16 @@ package main
 
 import "fmt"
 
-func factorial(i int) int {
-    if i <= 1 {
-        return 1
-    }
-    return i * factorial(i-1)
+func factorial(i uint) uint {
+	if i <= 1 {
+		return 1
+	}
+	return i * factorial(i-1)
 }
 
 func main() {
-    var i int = 7
-    fmt.Printf("Factorial of %d is %d\n", i, factorial(i))
+	var i uint = 3
+	fmt.Printf("Factorial of %d is %d\n", i, factorial(i))
 }
 ```
 输出结果：

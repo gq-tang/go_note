@@ -104,7 +104,7 @@ func main() {
 
     3
 命名返回参数可被同名局部变量遮蔽，此时需要显式返回。
-
+```go 
 func add(x, y int) (z int) {
     { // 不能在一个级别，引发 "z redeclared in this block" 错误。
         var z = x + y
@@ -112,6 +112,7 @@ func add(x, y int) (z int) {
         return z // 必须显式返回。
     }
 }
+```
 命名返回参数允许 defer 延迟调用通过闭包读取和修改。
 ```go 
 package main
