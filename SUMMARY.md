@@ -34,6 +34,7 @@
     * [异常处理](func/exception.md)
     * [单元测试](func/unit_test.md)
     * [压力测试](func/benchmark.md)
+    * [实例](func/test.md)
 * [方法](method/README.md)
     * [方法定义](method/define.md)
     * [匿名字段](method/annoymous.md)
