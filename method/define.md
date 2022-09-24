@@ -10,10 +10,11 @@ Golang 方法总是绑定对象实例，并隐式将实例作为第一实参 (re
 
 所有给定类型的方法属于该类型的方法集。
 
-1.1.1. 方法定义：
+### 1.1.1. 方法定义：
     func (recevier type) methodName(参数列表)(返回值列表){}
 
     参数和返回值可以省略
+```go     
 package main
 
 type Test struct{}
@@ -69,6 +70,7 @@ func (t *Test) method9(x, y int) (z int, err error) {
 }
 
 func main() {}
+```
 下面定义一个结构体类型和该类型的一个方法：
 ```go 
 package main
@@ -176,7 +178,7 @@ func main() {
     Pointer: 0xc42007c008
     Value: 0xc42007c020
     Pointer: 0xc42007c008
-1.1.2. 普通函数与方法的区别
+### 1.1.2. 普通函数与方法的区别
 1.对于普通函数，接收者为值类型时，不能将指针类型的数据直接传递，反之亦然。
 
 2.对于方法（如struct的方法），接收者为值类型时，可以直接用指针类型的变量调用方法，反过来同样也可以。

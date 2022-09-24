@@ -62,7 +62,8 @@ func main() {
 有返回值的函数，必须有明确的终止语句，否则会引发编译错误。
 
 你可能会偶尔遇到没有函数体的函数声明，这表示该函数不是以Go实现的。这样的声明定义了函数标识符。
-
+```go 
     package math
 
     func Sin(x float64) float //implemented in assembly language
+```    
