@@ -55,7 +55,6 @@
     * [并发安全和锁](concurrency/mutex.md)
     * [Sync](concurrency/sync.md)
     * [原子操作(atomic包)](concurrency/atomic.md)
-    * [GMP 原理与调度](concurrency/gmp.md)
 * [实例](demo/README.md)
     * [文件读写](demo/file.md)
 * [web开发](web/README.md)
